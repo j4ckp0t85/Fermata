@@ -69,7 +69,7 @@ android {
 
         auto {
             dimension "version"
-            applicationIdSuffix '.auto' + project.getProperties().getOrDefault('APP_ID_SFX', '')
+            applicationIdSuffix '.auto' + project.getProperties().getOrDefault('APP_ID_SFX', '.mg985')
             resValue "string", "app_name", "@string/app_name_auto"
             resValue "string", "media_service_name", "@string/media_service_name_auto"
             resValue "drawable", "media_service_icon", "@drawable/media_service"

@@ -1,5 +1,5 @@
 ext {
-    VERSION_CODE = 255
+    VERSION_CODE = 268
     VERSION_NAME = "2.0.0"
     SDK_MIN_VERSION = 23
     SDK_TARGET_VERSION = 35
@@ -87,7 +87,7 @@ subprojects {
                 }
                 auto {
                     dimension "version"
-                    applicationIdSuffix '.auto' + project.getProperties().getOrDefault('APP_ID_SFX', '')
+                    applicationIdSuffix '.auto' + project.getProperties().getOrDefault('APP_ID_SFX', '.mg985')
                 }
             }
         }
