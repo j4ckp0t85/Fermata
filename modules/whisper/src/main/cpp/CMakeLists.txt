@@ -32,8 +32,14 @@ if (CMAKE_ANDROID_ARCH_ABI MATCHES "arm64")
     )
     FetchContent_MakeAvailable(vk_hpp)
     include_directories(${vk_hpp_SOURCE_DIR})
+    
+    # Vulkan paths for Linux NDK (used in Docker build)
     set(Vulkan_INCLUDE_DIR "${ANDROID_NDK}/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include")
     set(Vulkan_GLSLC_EXECUTABLE "${ANDROID_NDK}/shader-tools/linux-x86_64/glslc")
+    
+    # Set host toolchain for vulkan-shaders-gen build
+    set(GGML_VULKAN_SHADERS_GEN_TOOLCHAIN "${CMAKE_CURRENT_SOURCE_DIR}/cmake/host-toolchain.cmake" CACHE STRING "" FORCE)
+    
     find_library(Vulkan_LIBRARY vulkan)
 endif ()
 

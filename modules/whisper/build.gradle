@@ -29,6 +29,19 @@ android {
             version '4.1.2'
         }
     }
+    
+    // Skip native build on Windows if pre-built libraries exist (from Docker build)
+    // This allows debugging in Android Studio on Windows while using Docker-compiled libs
+    if (System.getProperty('os.name').toLowerCase().contains('windows')) {
+        def jniLibsDir = file('src/main/jniLibs')
+        if (jniLibsDir.exists() && jniLibsDir.listFiles()?.length > 0) {
+            println "✓ Using pre-built whisper libraries from Docker (found in jniLibs)"
+            println "  Run docker/build-whisper.bat to rebuild native code"
+            externalNativeBuild.cmake.path = null  // Skip CMake build
+        } else {
+            println "⚠ No pre-built libraries found. Run docker/build-whisper.bat first!"
+        }
+    }
 }
 
 ext {
