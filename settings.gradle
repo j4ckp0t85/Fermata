@@ -31,7 +31,7 @@ project(':utils').projectDir = file('depends/utils')
 file('modules').eachDir {
     def name = ':' + it.name
     if ((':gdrive' == name) && !gradle.ext.enableGoogleServices) return
-    // if (':mlkit' == name) return
+    if (':mlkit' == name) return
     gradle.ext.modules.add(name)
     include name
     project(name).projectDir = it

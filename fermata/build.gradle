@@ -114,4 +114,5 @@ dependencies {
     implementation "com.google.firebase:firebase-encoders-json:18.0.1"
     implementation "com.google.firebase:firebase-encoders:17.0.0"
     implementation "javax.inject:javax.inject:1"
+    implementation 'com.google.mlkit:translate:17.0.3'
 }
